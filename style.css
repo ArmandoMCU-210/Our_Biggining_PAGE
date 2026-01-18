@@ -1,0 +1,237 @@
+/* --- ESTILOS GENERALES Y DISEÑO --- */
+:root {
+    --bg-color: #fdfbf7; /* Crema suave original */
+    /* Creamos variantes más suaves para el degradado */
+    --bg-gradient-1: #fdfbf7;
+    --bg-gradient-2: #f8eeee; /* Un tono rosado muy pálido */
+    --accent-color: #d4a5a5; /* Rosa viejo / Rose Gold */
+    --text-color: #4a4a4a; 
+    --highlight-font: 'Dancing Script', cursive;
+    --body-font: 'Playfair Display', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* --- NUEVO: DEGRADADO ANIMADO --- */
+    /* Usamos una mezcla suave de los colores crema y un toque del acento */
+    background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-1), #f2e6e6);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+    /* -------------------------------- */
+    
+    color: var(--text-color);
+    font-family: var(--body-font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative; /* Necesario para los elementos absolutos */
+}
+
+/* Animación del fondo degradado */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- NUEVO: FONDO DE CORAZONES ANIMADOS --- */
+.hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* IMPORTANTE: Se coloca detrás de todo el contenido */
+    pointer-events: none; /* Permite que los clics traspasen el fondo */
+}
+
+.heart {
+    position: absolute;
+    bottom: -10vh; /* Empiezan justo debajo de la pantalla */
+    color: var(--accent-color);
+    opacity: 0; /* Empiezan invisibles */
+    font-size: 2rem;
+    animation: floatUp linear infinite;
+    text-shadow: 0 0 5px rgba(212, 165, 165, 0.3);
+}
+
+/* Animación de flotar hacia arriba */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.4; /* Se vuelven sutilmente visibles */
+    }
+    100% {
+        transform: translateY(-120vh) rotate(360deg) scale(1.2); /* Suben hasta salir por arriba */
+        opacity: 0;
+    }
+}
+
+/* Personalización de cada corazón para que se muevan distinto */
+.heart:nth-child(1) { left: 10%; animation-duration: 15s; animation-delay: 0s; font-size: 1.5rem; }
+.heart:nth-child(2) { left: 25%; animation-duration: 18s; animation-delay: 4s; font-size: 2rem; }
+.heart:nth-child(3) { left: 40%; animation-duration: 12s; animation-delay: 2s; font-size: 1.8rem; }
+.heart:nth-child(4) { left: 55%; animation-duration: 20s; animation-delay: 6s; font-size: 1.2rem; }
+.heart:nth-child(5) { left: 70%; animation-duration: 14s; animation-delay: 1s; font-size: 2.2rem; }
+.heart:nth-child(6) { left: 85%; animation-duration: 19s; animation-delay: 5s; font-size: 1.6rem; }
+.heart:nth-child(7) { left: 95%; animation-duration: 16s; animation-delay: 3s; font-size: 1.4rem; }
+
+/* ----------------------------------------- */
+
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    min-height: 400px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1; /* Asegura que el contenido esté sobre los corazones */
+}
+
+/* --- CLASES DE UTILIDAD --- */
+.hidden { display: none !important; }
+
+/* --- TIPOGRAFÍA --- */
+h1 {
+    font-family: var(--highlight-font);
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.wait-msg {
+    font-size: 0.9rem; 
+    margin-top: 30px; 
+    opacity: 0.7;
+}
+
+/* --- BOTONES DE HISTORIA --- */
+.action-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-family: var(--body-font);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(212, 165, 165, 0.4);
+    margin-top: 10px;
+}
+
+.action-btn:active { transform: scale(0.95); }
+
+/* --- IMAGEN PERSONAL --- */
+.photo-frame {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem auto;
+    border-radius: 50%; 
+    border: 3px solid var(--accent-color);
+    padding: 5px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    background: white; /* Para que el fondo no se transparente en la foto */
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* --- CONTADOR --- */
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 2rem 0;
+}
+
+.time-box {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    min-width: 70px;
+}
+
+.time-box span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.time-box small {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- FASE 2: EL ACERTIJO --- */
+#reveal-phase {
+    display: none; 
+    opacity: 0;
+    transition: opacity 2s ease-in;
+    background: white;
+    padding: 40px 20px;
+    border-radius: 15px;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(212, 165, 165, 0.2);
+}
+
+.riddle-box {
+    font-size: 1.3rem;
+    margin: 2rem 0;
+    color: #2c2c2c;
+}
+
+/* --- BOTÓN DE MÚSICA --- */
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+/* Animaciones */
+.fade-in { animation: fadeIn 1.5s forwards; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

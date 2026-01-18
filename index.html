@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Isela</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="hearts-bg">
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+        <div class="heart">❤</div>
+    </div>
+
+    <div class="container main-container">
+        
+        <div id="step-1" class="story-step fade-in">
+            <h1>Hola, Isela...</h1>
+            <p>Este es el inicio de nuestra historia… ¿estás lista para comenzarla conmigo?</p>
+            <button class="action-btn" onclick="nextStep('step-1', 'step-2', true)">Comencemos la historia</button>
+        </div>
+
+        <div id="step-2" class="story-step hidden">
+            <p>"Isela, esto es algo que siempre he deseado. Es el inicio de algo muy especial, un pequeño paso hacia una vida llena de felicidad que de verdad espero vivir contigo"</p>
+            <p>He querido crear algo único, solo para ti.</p>
+            <button class="action-btn" onclick="nextStep('step-2', 'step-3')">Quiero ver más</button>
+        </div>
+
+        <div id="step-3" class="story-step hidden">
+            <p>"Desde que te conocí en ese AFEL de fotografía, supe de inmediato que tenías algo especial..."</p>
+            <p>A pesar de todos los inconvenientes y adversidades que vivimos en el pasado, el habernos conocido en el AFEL fue el inicio de algo muy hermoso. Sin saber del todo quién eras ni si sentías lo mismo, aun así me animé a seguir adelante, guiado por la ilusión y las ganas de descubrir todo lo que estaba por venir.</p>
+            <button class="action-btn" onclick="nextStep('step-3', 'step-4')">Sigue leyendo...</button>
+        </div>
+
+        <div id="step-4" class="story-step hidden">
+            <p>"Recuerdo perfectamente ese momento en que te envié el primer mensaje por Instagram... En el fondo, estaba seguro de que si me correspondías, íbamos a ser inmensamente felices."</p>
+            <p>Y no me equivoqué. Cuando por fin te conocí bien, no solo me gustaste... simplemente me quedé perdidamente enamoradísimo de ti.</p>
+            <button class="action-btn" onclick="nextStep('step-4', 'step-5')">Continúa...</button>
+        </div>
+
+        <div id="step-5" class="story-step hidden">
+            <p>"Cada momento que compartimos hoy se está convirtiendo en un recuerdo que atesoraré siempre, y en la base de todos los momentos que aún nos faltan por vivir, de las historias que construiremos juntos y de todo lo hermoso que nos espera en el futuro."</p>
+            <p>¿Me permites sorprenderte una vez más?</p>
+            <div class="btn-group">
+                <button class="action-btn" onclick="nextStep('step-5', 'step-6')">Sí, sorpréndeme</button>
+            </div>
+        </div>
+
+        <div id="step-6" class="story-step hidden">
+            <p>"Lo que viene a continuación es el comienzo de algo especial..."</p>
+            <p>Solo queda una pregunta: ¿Estás lista para descubrirlo?</p>
+            <button class="action-btn" onclick="nextStep('step-6', 'main-content')">Estoy lista</button>
+        </div>
+
+        <div id="main-content" class="hidden">
+            <div id="intrigue-phase" class="fade-in">
+                <h1>Algo especial está por comenzar...</h1>
+                
+                <p>"Dicen que el tiempo es relativo, pero cada segundo cuenta cuando se trata de ti, Isela."</p>
+                
+                <div id="countdown">
+                    <div class="time-box"><span id="days">00</span><small>Días</small></div>
+                    <div class="time-box"><span id="hours">00</span><small>Hrs</small></div>
+                    <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
+                    <div class="time-box"><span id="seconds">00</span><small>Seg</small></div>
+                </div>
+
+                <p class="wait-msg">Espera a que el reloj marque cero para descubrir nuestro primer destino.</p>
+            </div>
+
+            <div id="reveal-phase">
+                <h1>¡El momento ha llegado!</h1>
+                <p>El contador ha llegado a cero, pero nuestra historia apenas empieza.</p>
+                
+                <div class="riddle-box">
+                    <p><em>"Donde el aroma a recién horneado despierta los sentidos,<br>
+                    y lo dulce se disfruta mejor en compañía.<br>
+                    El destino es un lugar de 'Buen Pan' y mejores momentos..."</em></p>
+                </div>
+
+                <p><strong>Vamos juntos a ese "Buen Pan".<br>Ahí descubriremos la primera pista de esta aventura. 💖</strong></p>
+            </div>
+        </div>
+
+    </div>
+
+    <audio id="bg-music" loop autoplay>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-btn hidden" id="musicBtn">♪</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
