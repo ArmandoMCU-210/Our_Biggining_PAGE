@@ -59,7 +59,19 @@
         <div id="step-6" class="story-step hidden">
             <p>"Lo que viene a continuación es el comienzo de algo especial..."</p>
             <p>Solo queda una pregunta: ¿Estás lista para descubrirlo?</p>
-            <button class="action-btn" onclick="nextStep('step-6', 'main-content')">Estoy lista</button>
+            <button class="action-btn" onclick="nextStep('step-6', 'step-spotify')">Estoy lista</button>
+        </div>
+
+        <div id="step-spotify" class="story-step hidden">
+            <p>"Tus ojos, mi lugar favorito..."</p>
+            
+            <div class="spotify-wrapper">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1RIhd7jjWDQwSKsbxxGArN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
+            <p>Si hay algo que me encanta de ti, son tus ojos. En ellos encuentro calma, emoción y todo eso que me haces sentir sin decir una sola palabra. Por eso te dedico esta canción, porque cada vez que la escucho me recuerda exactamente a esos momentos en los que me pierdo en tu mirada y el mundo simplemente se detiene.</p>
+
+            <button class="action-btn" onclick="nextStep('step-spotify', 'main-content')">Continuar</button>
         </div>
 
         <div id="main-content" class="hidden">

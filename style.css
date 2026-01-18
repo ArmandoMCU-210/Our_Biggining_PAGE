@@ -235,3 +235,19 @@ p {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* --- ESTILO PARA SPOTIFY --- */
+.spotify-wrapper {
+    margin: 20px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Sombra suave para resaltar */
+    border-radius: 12px;
+}
+
+.song-message {
+    font-size: 1.1rem;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-style: italic;
+}

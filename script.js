@@ -96,3 +96,35 @@ function toggleMusic() {
         music.pause();
     }
 }
+
+// --- FUNCIÓN PARA NAVEGAR ENTRE PANTALLAS (CON CONTROL DE MÚSICA) ---
+function nextStep(currentId, nextId) {
+    const currentElement = document.getElementById(currentId);
+    const nextElement = document.getElementById(nextId);
+    const music = document.getElementById("bg-music"); // Referencia al audio de fondo
+
+    // 1. SI ENTRAMOS A SPOTIFY: Pausamos la música de fondo
+    if (nextId === 'step-spotify') {
+        music.pause();
+        console.log("Música pausada para escuchar Spotify");
+    }
+
+    // 2. SI SALIMOS DE SPOTIFY: Volvemos a activar la música de fondo
+    // (Esto ocurre cuando da clic en "Continuar" hacia el contador)
+    if (currentId === 'step-spotify' && nextId === 'main-content') {
+        music.play();
+        console.log("Música reanudada para el final");
+    }
+
+    // --- LÓGICA VISUAL (DESVANECIMIENTO) ---
+    // Desvanecer pantalla actual
+    currentElement.style.opacity = '0';
+    currentElement.style.transition = 'opacity 0.5s ease';
+
+    // Esperar a que termine la transición para ocultar uno y mostrar el otro
+    setTimeout(() => {
+        currentElement.classList.add('hidden');
+        nextElement.classList.remove('hidden');
+        nextElement.classList.add('fade-in');
+    }, 500);
+}
