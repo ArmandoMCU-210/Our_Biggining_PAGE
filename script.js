@@ -128,3 +128,33 @@ function nextStep(currentId, nextId) {
         nextElement.classList.add('fade-in');
     }, 500);
 }
+
+// --- FUNCIÓN PARA NAVEGAR ENTRE PANTALLAS (CON CONTROL DE MÚSICA) ---
+function nextStep(currentId, nextId) {
+    const currentElement = document.getElementById(currentId);
+    const nextElement = document.getElementById(nextId);
+    const music = document.getElementById("bg-music"); 
+
+    // 1. SI ENTRAMOS A SPOTIFY: Pausamos la música de fondo
+    if (nextId === 'step-spotify') {
+        music.pause();
+        console.log("Música pausada para escuchar Spotify");
+    }
+
+    // 2. MODIFICADO: SI SALIMOS DE SPOTIFY HACIA LAS PELÍCULAS
+    // Volvemos a activar la música de fondo
+    if (currentId === 'step-spotify' && nextId === 'step-movies') {
+        music.play();
+        console.log("Música reanudada para la sección de películas");
+    }
+
+    // --- LÓGICA VISUAL (DESVANECIMIENTO) ---
+    currentElement.style.opacity = '0';
+    currentElement.style.transition = 'opacity 0.5s ease';
+
+    setTimeout(() => {
+        currentElement.classList.add('hidden');
+        nextElement.classList.remove('hidden');
+        nextElement.classList.add('fade-in');
+    }, 500);
+}
