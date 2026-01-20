@@ -299,3 +299,572 @@ p {
     color: var(--accent-color);
     font-weight: bold;
 }
+
+/* --- ESTILOS DE LA PÁGINA DE FOTOS --- */
+
+.photo-container {
+    max-width: 500px; /* Un poco más estrecho para que se vea bien en móvil */
+    padding-bottom: 50px;
+}
+
+.gallery-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* --- GRID DE FOTOS --- */
+.photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas */
+    gap: 15px;
+    width: 100%;
+}
+
+.frame-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16; /* Formato vertical historia de Instagram */
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 2px solid white;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Efecto de marco bloqueado */
+.locked-frame {
+    background: #eee;
+    opacity: 0.8;
+    filter: grayscale(1);
+}
+
+.frame-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 165, 165, 0.3);
+}
+
+/* --- PANTALLAS INTERNAS DEL MARCO --- */
+.lock-screen, .upload-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Estilos de bloqueo */
+.code-input {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+    text-align: center;
+    font-family: var(--body-font);
+    font-size: 0.9rem;
+}
+
+.unlock-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.unlock-btn:disabled, .code-input:disabled {
+    background: #ddd;
+    cursor: not-allowed;
+}
+
+/* Estilos de subida */
+.upload-label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    
+    /* CAMBIO IMPORTANTE: */
+    position: relative; /* Aseguramos que respete el z-index */
+    z-index: 20; /* Capa SUPERIOR (encima de la foto) */
+    transition: opacity 0.3s; /* Para que desaparezca suavemente */
+}
+
+.upload-label i {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.preview-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    /* CAMBIO IMPORTANTE: */
+    z-index: 10; /* Capa INFERIOR (debajo del botón) */
+}
+
+/* Ícono de interrogación (?) */
+.hint-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.8);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent-color);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    /* --- CAMBIO AQUÍ --- */
+    z-index: 30; /* ¡El nivel más alto! Encima del botón y la foto */
+}
+
+/* --- MODALES --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.85); /* Fondo oscuro */
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: transparent;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content h2, .modal-content h3 {
+    color: white;
+    font-family: var(--highlight-font);
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 201;
+}
+
+/* Collage Grid en el modal */
+.collage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.collage-item {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid white;
+}
+
+/* --- BOTÓN DE REINICIO --- */
+#reset-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparente */
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 100;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#reset-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: rotate(-360deg); /* Efecto de giro al pasar el mouse */
+}
+
+/* --- BOTÓN DE VOLVER (Página de Fotos) --- */
+/* Se coloca al lado del botón de reinicio */
+#home-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 70px; /* Separado 50px del botón de reinicio */
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 100;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#home-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* --- BOTÓN SECRETO (Página Principal) --- */
+#secret-access-btn {
+    position: fixed;
+    bottom: 20px; /* Posición inferior */
+    left: 20px;   /* Posición izquierda */
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+    border: none;
+    border-radius: 50%; /* Forma circular */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 1000;
+    color: var(--text-color);
+    font-size: 1.2rem; /* Tamaño del ícono */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#secret-access-btn i {
+    /* Quitamos estilos específicos del ícono anterior */
+    color: inherit; 
+}
+
+#secret-access-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: scale(1.1); /* Un pequeño efecto de zoom al pasar el mouse */
+}
+
+/* --- ESTILOS DE TARJETA GIRATORIA (FLIP CARD) --- */
+
+/* El contenedor define la perspectiva 3D */
+.frame-wrapper {
+    background-color: transparent; /* Quitamos fondo blanco del wrapper */
+    perspective: 1000px; /* Profundidad 3D */
+    border: none; /* El borde lo tendrá el 'front' y 'back' */
+    box-shadow: none;
+}
+
+/* El contenedor interno que se mueve */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s; /* Duración del giro */
+    transform-style: preserve-3d;
+}
+
+/* Clase que activa el giro */
+.frame-wrapper.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Cara frontal y trasera */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Estilo de la cara FRONTAL (Donde va la foto y el candado) */
+.flip-card-front {
+    background-color: #fff;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo de la cara TRASERA (Donde va la palabra) */
+.flip-card-back {
+    background-color: white; /* Color base si no hay foto */
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    position: relative; /* Importante para posicionar capas internas */
+}
+
+.back-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre todo el espacio */
+    z-index: 1; /* Capa más baja */
+}
+
+.color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* CAMBIO AQUÍ: Usamos negro en lugar del color rosa */
+    background-color: #000; 
+    
+    /* Ajustamos la opacidad */
+    /* 0.6 es ideal: oscurece lo suficiente para leer, pero deja ver la foto */
+    opacity: 0.4; 
+    
+    z-index: 2; 
+}
+
+.flip-card-back h2 {
+    font-family: var(--highlight-font);
+    font-size: 3rem;
+    margin: 0;
+    color: white;
+    position: relative;
+    z-index: 3; /* Encima de todo lo demás */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Sombra para mejor lectura */
+}
+
+/* --- BOTÓN DE ALTERNAR VISTA --- */
+/* --- BOTÓN FLOTANTE DE ALTERNAR VISTA (Abajo Centro) --- */
+#toggle-view-btn {
+    position: fixed;          
+    bottom: 15px;            /* Bien pegadito al borde inferior */
+    left: 50%;               
+    transform: translateX(-50%); /* Centrado */
+    
+    background-color: white;      /* Fondo Blanco */
+    color: var(--accent-color);   /* Texto Rosa */
+    border: 1px solid var(--accent-color); /* Borde fino rosa */
+    
+    padding: 6px 15px;       /* Relleno pequeño (compacto) */
+    border-radius: 20px;     
+    
+    font-family: var(--body-font);
+    font-size: 0.8rem;       /* Letra más pequeña y discreta */
+    font-weight: bold;
+    text-transform: uppercase; /* Un toque elegante */
+    letter-spacing: 1px;
+    
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Sombra muy suave */
+    z-index: 100;            
+    transition: all 0.3s ease;
+    
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#toggle-view-btn:hover {
+    background-color: var(--accent-color); /* Al pasar el mouse se vuelve rosa */
+    color: white;                          /* y el texto blanco */
+    box-shadow: 0 4px 12px rgba(212, 165, 165, 0.4);
+    transform: translateX(-50%) translateY(-2px);
+}
+
+#toggle-view-btn.hidden {
+    display: none;
+}
+
+/* Ajustes para el estado bloqueado en la estructura nueva */
+.locked-frame .flip-card-front {
+    background: #eee;
+    filter: grayscale(1);
+    opacity: 0.8;
+}
+
+/* --- ESTILOS DEL SLIDER (GALERÍA DE REFERENCIAS) --- */
+
+.slider-content {
+    width: 100%;
+    max-width: 600px; /* Ancho máximo para que no se estire demasiado en PC */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.image-wrapper {
+    width: 100%;
+    /* Altura máxima calculada para que quepa en móviles sin tapar los botones */
+    height: 60vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid white;
+}
+
+.slider-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Muestra la foto completa sin recortarla */
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Botones de navegación (Flechas) */
+.nav-btn {
+    background-color: white;
+    color: var(--accent-color);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.nav-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.nav-btn:active {
+    transform: scale(0.9);
+}
+
+/* Ajuste de proporciones para los marcos principales en pantallas muy altas */
+.frame-wrapper {
+    /* Aseguramos que object-fit funcione bien siempre */
+    overflow: hidden; 
+}
+.preview-img, .back-img {
+    object-fit: cover; /* Cubre todo el marco */
+}
+
+/* --- ESTILOS DEL COLLAGE (MASONRY LAYOUT) --- */
+/* --- ESTILOS DE LA SECCIÓN DE RAZONES (LIMPIO Y ELEGANTE) --- */
+
+.reasons-container {
+    width: 100%;
+    max-width: 650px; /* Ancho controlado para mejor lectura */
+    margin: 50px auto; 
+    background: transparent;
+    text-align: center; 
+}
+
+.reasons-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.reasons-list li {
+    font-family: var(--body-font); /* Usamos la fuente serif elegante */
+    font-size: 1.2rem; /* Letra un poco más grande */
+    margin-bottom: 25px; /* Más espacio entre líneas para que "respire" */
+    color: var(--text-color);
+    line-height: 1.6;
+    letter-spacing: 0.5px; /* Un poco de aire entre letras */
+    
+    /* Borde muy sutil debajo para separar suavemente cada idea (opcional) */
+    /* border-bottom: 1px solid rgba(0,0,0,0.05); */
+    /* padding-bottom: 10px; */
+    
+    /* Animación de entrada */
+    animation: fadeInUp 0.8s ease backwards;
+}
+
+/* Para darle variedad visual y que no se vea monótono, 
+   podemos hacer que las frases impares tengan un color un poquito más oscuro */
+.reasons-list li:nth-child(odd) {
+    color: #2c2c2c; 
+}
+
+.reasons-list li:nth-child(even) {
+    color: #555; 
+}
+
+/* Animación de aparición suave */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

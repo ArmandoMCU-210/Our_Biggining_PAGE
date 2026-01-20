@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia en Fotos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="hearts-bg">
+        <div class="heart">❤</div><div class="heart">❤</div><div class="heart">❤</div>
+        <div class="heart">❤</div><div class="heart">❤</div><div class="heart">❤</div>
+    </div>
+
+    <div class="container photo-container fade-in">
+        
+        <header class="gallery-header">
+            <h1>Nuestros Momentos</h1>
+            <p>"Una imagen dice más que mil palabras..."</p>
+            </header>
+
+        <div class="photo-grid">
+            
+            <div class="frame-wrapper" id="frame-1">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="status-icon"><i class="fa-solid fa-lock"></i></div>
+                        <div class="lock-screen">
+                            <p>Foto #1</p>
+                            <input type="text" class="code-input" placeholder="Ingresa el código" id="input-1">
+                            <button class="unlock-btn" onclick="checkCode(1)">Desbloquear</button>
+                        </div>
+                        <div class="upload-screen hidden">
+                            <div class="hint-icon" onclick="showSingleRef(1)">?</div>
+                            <label for="file-1" class="upload-label">
+                                <i class="fa-solid fa-camera"></i><span>Subir</span>
+                            </label>
+                            <input type="file" id="file-1" accept="image/*" onchange="previewImage(1, this)">
+                            <img src="" class="preview-img hidden" id="preview-1">
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="" class="back-img hidden" id="back-img-1"> <div class="color-overlay"></div> <h2 id="word-1">¿Puedo</h2> </div>
+                </div>
+            </div>
+
+            <div class="frame-wrapper locked-frame" id="frame-2">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="status-icon"><i class="fa-solid fa-lock"></i></div>
+                        <div class="lock-screen">
+                            <p>Foto #2</p>
+                            <input type="text" class="code-input" placeholder="Código..." id="input-2" disabled>
+                            <button class="unlock-btn" onclick="checkCode(2)" disabled>Desbloquear</button>
+                        </div>
+                        <div class="upload-screen hidden">
+                            <div class="hint-icon" onclick="showSingleRef(2)">?</div>
+                            <label for="file-2" class="upload-label"><i class="fa-solid fa-camera"></i></label>
+                            <input type="file" id="file-2" accept="image/*" onchange="previewImage(2, this)">
+                            <img src="" class="preview-img hidden" id="preview-2">
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="" class="back-img hidden" id="back-img-2">
+                        <div class="color-overlay"></div>
+                        <h2 id="word-2">ser</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="frame-wrapper locked-frame" id="frame-3">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="status-icon"><i class="fa-solid fa-lock"></i></div>
+                        <div class="lock-screen">
+                            <p>Foto #3</p>
+                            <input type="text" class="code-input" placeholder="Código..." id="input-3" disabled>
+                            <button class="unlock-btn" onclick="checkCode(3)" disabled>Desbloquear</button>
+                        </div>
+                        <div class="upload-screen hidden">
+                            <div class="hint-icon" onclick="showSingleRef(3)">?</div>
+                            <label for="file-3" class="upload-label"><i class="fa-solid fa-camera"></i></label>
+                            <input type="file" id="file-3" accept="image/*" onchange="previewImage(3, this)">
+                            <img src="" class="preview-img hidden" id="preview-3">
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="" class="back-img hidden" id="back-img-3">
+                        <div class="color-overlay"></div>
+                        <h2 id="word-3">tu</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="frame-wrapper locked-frame" id="frame-4">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="status-icon"><i class="fa-solid fa-lock"></i></div>
+                        <div class="lock-screen">
+                            <p>Foto #4</p>
+                            <input type="text" class="code-input" placeholder="Código..." id="input-4" disabled>
+                            <button class="unlock-btn" onclick="checkCode(4)" disabled>Desbloquear</button>
+                        </div>
+                        <div class="upload-screen hidden">
+                            <div class="hint-icon" onclick="showSingleRef(4)">?</div>
+                            <label for="file-4" class="upload-label"><i class="fa-solid fa-camera"></i></label>
+                            <input type="file" id="file-4" accept="image/*" onchange="previewImage(4, this)">
+                            <img src="" class="preview-img hidden" id="preview-4">
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="" class="back-img hidden" id="back-img-4">
+                        <div class="color-overlay"></div>
+                        <h2 id="word-4">novio?</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div id="final-message" class="hidden" style="margin-top: 30px;">
+            <p>¡Has completado nuestra historia visual! Te amo, Isela. ❤</p>
+        </div>
+
+    </div>
+
+    <div id="hint-modal" class="modal hidden">
+        <button class="close-modal" onclick="closeModals()">X</button>
+        <div class="modal-content">
+            <h3>Intenta recrear esta foto:</h3>
+            <img id="hint-img" src="" alt="Referencia" style="max-width: 100%; border-radius: 10px;">
+        </div>
+    </div>
+
+    <button id="reset-btn" onclick="resetProgress()" title="Reiniciar todo">
+        <i class="fa-solid fa-rotate-left"></i>
+    </button>
+
+    <a href="index.html" id="home-btn" title="Volver al inicio">
+        <i class="fa-solid fa-house"></i>
+    </a>
+
+    <button id="toggle-view-btn" class="hidden" onclick="toggleAllCards()">
+        <i class="fa-solid fa-rotate"></i> Ver Texto / Fotos
+    </button>
+
+    <script src="fotos.js"></script>
+</body>
+</html>

@@ -158,3 +158,17 @@ function nextStep(currentId, nextId) {
         nextElement.classList.add('fade-in');
     }, 500);
 }
+
+function requestSecretAccess() {
+    // Pide la contraseña
+    const password = prompt("🔒 Ingresa la contraseña de acceso directo:");
+
+    const masterPassword = "ARMANDO210"; 
+
+    if (password && password.toUpperCase() === masterPassword) {
+        // Si es correcta, redirige
+        window.location.href = "fotos.html";
+    } else if (password !== null) { // Si no le dio a cancelar...
+        alert("Contraseña incorrecta. Acceso denegado.");
+    }
+}

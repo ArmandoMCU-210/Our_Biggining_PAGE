@@ -12,6 +12,10 @@
 </head>
 <body>
 
+    <button id="secret-access-btn" onclick="requestSecretAccess()" title="Acceso Secreto">
+        <i class="fa-solid fa-lock"></i>
+    </button>
+
     <div class="hearts-bg">
         <div class="heart">❤</div>
         <div class="heart">❤</div>
@@ -109,7 +113,163 @@
                 </p>
             </div>
 
-            <button class="action-btn" onclick="nextStep('step-movies', 'main-content')">Continuar al final</button>
+            <button class="action-btn" onclick="nextStep('step-movies', 'step-reasons'); window.scrollTo({ top: 0, behavior: 'smooth' });">Tengo mil razones para quererte</button>
+        </div>
+
+        <div id="step-reasons" class="story-step hidden">
+            <h1>Por todo esto y más...</h1>
+            <p>"Si alguna vez te preguntas por qué te quiero, aquí hay un recordatorio..."</p>
+            
+            <div class="reasons-container">
+                <ul class="reasons-list">
+                    <li>Me gusta tu sonrisa.</li>
+                    <li>Me gusta cómo se iluminan tus ojos cuando hablas.</li>
+                    <li>Me gusta tu forma de mirar.</li>
+                    <li>Me gusta tu voz, me calma.</li>
+                    <li>Me gusta cómo te ríes.</li>
+                    <li>Me gusta tu manera de caminar.</li>
+                    <li>Me gusta cómo te vistes.</li>
+                    <li>Me gusta tu estilo.</li>
+                    <li>Me gustan tus gestos cuando te emocionas.</li>
+                    <li>Me gustan tus manos.</li>
+                    <li>Me gusta cómo te peinas, eso incluye tambien tu flequito hermoso.</li>
+                    <li>Me gusta cómo se ve tu cara en todo momento.</li>
+                    <li>Me gusta cómo te ves cuando estás medio dormida.</li>
+                    <li>Me gusta que eres auténtica, no finges ser otra persona.</li>
+                    <li>Me gusta tu sentido del humor.</li>
+                    <li>Me gusta que eres amable con las personas.</li>
+                    <li>Me gusta que no te rindes fácilmente.</li>
+                    <li>Me gusta que tienes metas y trabajas por ellas.</li>
+                    <li>Me gusta tu capacidad de esforzarte por lo que quieres.</li>
+                    <li>Me gusta que eres responsable aunque estés cansada.</li>
+                    <li>Me gusta tu valentía para enfrentar miedos.</li>
+                    <li>Me gusta tu humildad, aun cuando eres buena en muchísimas cosas.</li>
+                    <li>Me gusta tu ternura, esa que solo muestras de cerca.</li>
+                    <li>Me gusta que eres detallista sin necesidad de grandes gestos.</li>
+                    <li>Me gusta tu sinceridad, incluso cuando las verdades duelen.</li>
+                    <li>Me gusta que respetas los límites de los demás.</li>
+                    <li>Me gusta que escuchas antes de juzgar.</li>
+                    <li>Me gusta cómo me escuchas con atención real.</li>
+                    <li>Me gusta que recuerdas cosas que te cuento, aunque sean complejas.</li>
+                    <li>Me gusta que respetas mis tiempos y mi espacio.</li>
+                    <li>Me gusta que confías en mí y me lo demuestras.</li>
+                    <li>Me gusta que me haces sentir comprendido.</li>
+                    <li>Me gusta que cuidas mi corazón, no juegas con mis sentimientos.</li>
+                    <li>Me gusta que me preguntas cómo estoy de verdad.</li>
+                    <li>Me gusta que cuentas conmigo cuando necesitas apoyo.</li>
+                    <li>Me gusta que me incluyes en tus planes.</li>
+                    <li>Me gusta que me haces sentir en paz cuando estoy contigo.</li>
+                    <li>Me gusta que confías en contarme tus miedos.</li>
+                    <li>Me gusta que eres honesta cuando algo te molesta.</li>
+                    <li>Me gusta que me haces sentir que somos un equipo.</li>
+                    <li>Me gusta que compartimos valores importantes.</li>
+                    <li>Me gusta que vemos el futuro de formas parecidas.</li>
+                    <li>Me gusta que podemos hablar de todo, incluso de temas difíciles.</li>
+                    <li>Me gusta que tenemos intereses en común que nos unen.</li>
+                    <li>Me gusta que podemos estar en silencio sin que sea incómodo.</li>
+                    <li>Me gusta que entiendes mis chistes todos rancios.</li>
+                    <li>Me gusta que conmigo puedes ser tú, sin filtros.</li>
+                    <li>Me gusta que la conversación contigo fluye sin esfuerzo.</li>
+                    <li>Me gusta que valoras la lealtad tanto como yo.</li>
+                    <li>Me gusta que confiamos el uno en el otro.</li>
+                    <li>Me gusta que podemos soñar juntos y también planear cosas reales.</li>
+                    <li>Me gusta que nuestras formas de amar sean tan parecidas.</li>
+                    <li>Me gusta que tenemos ritmos distintos pero compatibles.</li>
+                    <li>Me gusta cómo tratas a las personas que te rodean.</li>
+                    <li>Me gusta tu ética de trabajo y tu disciplina.</li>
+                    <li>Me gusta que sigues adelante incluso cuando estás cansada.</li>
+                    <li>Me gusta tu capacidad de aprender cosas nuevas.</li>
+                    <li>Me gusta que no te conformas con menos de lo que mereces.</li>
+                    <li>Me gusta tu forma de defender lo que crees justo.</li>
+                    <li>Me gusta tu sensibilidad ante el dolor de los demás.</li>
+                    <li>Me gusta que ayudas sin esperar algo a cambio.</li>
+                    <li>Me gusta tu compromiso con lo que amas.</li>
+                    <li>Me gusta que no te da miedo decir “no sé”.</li>
+                    <li>Me gusta tu deseo de crecer como persona.</li>
+                    <li>Me gusta tu forma de cuidar a tu familia o a tus amigos.</li>
+                    <li>Me gusta que no te avergüenzas de sentir.</li>
+                    <li>Me gusta que inspiras a quienes te rodean.</li>
+                    <li>Me gusta cómo se siente caminar contigo por la calle.</li>
+                    <li>Me gusta cuando hablamos hasta tarde sin darnos cuenta de la hora.</li>
+                    <li>Me gusta cuando me cuentas historias de tu vida.</li>
+                    <li>Me gusta que siempre hacemos planes para todo.</li>
+                    <li>Me gusta cuando reímos por algo que solo nosotros entendemos.</li>
+                    <li>Me gusta cuando me mandas mensajes inesperados o llamadas.</li>
+                    <li>Me gusta cuando te acuerdas de mí con una canción.</li>
+                    <li>Me gusta cuando te emocionas contándome tus ideas.</li>
+                    <li>Me gusta cuando me miras y sonreímos sin decir nada.</li>
+                    <li>Me gusta cuando compartimos nuestras preocupaciones y nos apoyamos.</li>
+                    <li>Me gusta cuando hacemos cosas nuevas por primera vez juntos.</li>
+                    <li>Me gusta cuando cuidas de mí aunque digas que no es nada.</li>
+                    <li>Me gusta cuando compartimos nuestros sueños.</li>
+                    <li>Me gusta cuando me haces sentir que el tiempo pasa más rápido.</li>
+                    <li>Me gusta cuando me haces sentir que el tiempo se detiene.</li>
+                    <li>Me gusta que a tu lado me siento seguro.</li>
+                    <li>Me gusta que me haces sentir valorado.</li>
+                    <li>Me gusta que a tu lado siento que soy suficiente.</li>
+                    <li>Me gusta que me haces sentir en paz.</li>
+                    <li>Me gusta que despiertas en mí ganas de ser mejor.</li>
+                    <li>Me gusta que me haces sentir acompañado.</li>
+                    <li>Me gusta que me haces sentir escuchado de verdad.</li>
+                    <li>Me gusta que me haces sentir querido con cosas pequeñas.</li>
+                    <li>Me gusta que me haces sentir libre, no atrapado.</li>
+                    <li>Me gusta que me haces sentir capaz de lograr mis metas.</li>
+                    <li>Me gusta que me haces sentir atractivo y especial.</li>
+                    <li>Me gusta que me haces sentir que mi opinión importa.</li>
+                    <li>Me gusta que a tu lado me siento más seguro.</li>
+                    <li>Me gusta que me haces sentir que el amor puede ser sano.</li>
+                    <li>Me gusta que me haces sentir tranquilo con mi vulnerabilidad.</li>
+                    <li>Me gusta que me haces sentir que no tengo que fingir.</li>
+                    <li>Me gusta que me haces sentir que todo esfuerzo vale la pena.</li>
+                    <li>Me gusta que me haces sentir que soy una mejor versión de mí.</li>
+                    <li>Me gusta cómo pronuncias mi nombre.</li>
+                    <li>Me gusta cómo me miras.</li>
+                    <li>Me gusta que contestes mis mensajes con cariño.</li>
+                    <li>Me gusta que te acuerdas de fechas o detalles importantes.</li>
+                    <li>Me gusta cómo te preocupas cuando no sabes de mí.</li>
+                    <li>Me gusta que te fijes en mis cambios de ánimo.</li>
+                    <li>Me gusta cuando me preguntas si ya comí o si dormí bien.</li>
+                    <li>Me gusta cuando me abrazas fuerte.</li>
+                    <li>Me gusta cuando me haces espacio en tu vida ocupada.</li>
+                    <li>Me gusta cuando te tomas en serio lo que para mí es importante.</li>
+                    <li>Me gusta cuando me pides consejo.</li>
+                    <li>Me gusta cuando te quedas un ratito más solo para estar conmigo.</li>
+                    <li>Me gusta cuando te preocupa cómo me siento después de una diferencia.</li>
+                    <li>Me gusta cuando me haces sentir que cuento.</li>
+                    <li>Me gusta cuando te abres conmigo aunque te cueste.</li>
+                    <li>Me gusta cuando me haces sentir que estar conmigo es tu elección diaria.</li>
+                    <li>Me gusta que contigo entiendo que el amor no es perfecto, pero sí real.</li>
+                    <li>Me gusta que me recuerdas que merezco cosas buenas.</li>
+                    <li>Me gusta que sacas de mí partes que creía apagadas.</li>
+                    <li>Me gusta que me inspiras a sanar mis heridas.</li>
+                    <li>Me gusta que me enseñas a confiar otra vez.</li>
+                    <li>Me gusta que me muestras que puedo ser amado tal como soy.</li>
+                    <li>Me gusta cómo haces que las cosas complicadas parezcan simples.</li>
+                    <li>Me gusta tu capacidad de amar en silencio.</li>
+                    <li>Me gusta cómo conviertes los días grises en soleados con tu energía.</li>
+                    <li>Me gusta que tienes el don de hacer sentir importante a quien te escucha.</li>
+                    <li>Me gusta tu fuerza silenciosa que no presume, pero se siente.</li>
+                    <li>Me gusta que entiendes el valor del tiempo y lo cuidas como tesoro.</li>
+                    <li>Me gusta tu generosidad con tu atención, das el 100% cuando escuchas.</li>
+                    <li>Me gusta cómo haces que las despedidas sean cálidas, nunca frías.</li>
+                    <li>Me gusta que tienes la valentía de empezar de nuevo cuando es necesario.</li>
+                    <li>Me gusta tu sabiduría para saber cuándo hablar y cuándo callar.</li>
+                    <li>Me gusta cómo haces que el mundo sea más bonito solo por existir en él.</li>
+                    <li>Me gusta que tienes el coraje de ser vulnerable cuando debe ser.</li>
+                    <li>Me gusta cómo equilibras tu independencia con tu capacidad de conectar.</li>
+                    <li>Me gusta tu gratitud genuina por las cosas simples de la vida.</li>
+                    <li>Me gusta cómo haces que los demás quieran ser mejores sin pedírselo.</li>
+                    <li>Me gusta que cuando sonríes, el mundo se siente más seguro.</li>
+                    <li>Me gusta que tienes la magia de hacer eterno cada momento bueno.</li>
+                    <li>Me gusta tu capacidad de amar sin condiciones cuando decides hacerlo.</li>
+                    <li>Me gusta cómo haces que las imperfecciones se vuelvan encantadoras.</li>
+                    <li>Me gusta cómo iluminas espacios solo con entrar.</li>
+                    <li>Me gusta que tienes la fortaleza de decir "te necesito" cuando lo sientes.</li>
+                    <li>Me gusta tu belleza interior que supera con creces la exterior.</li>
+                </ul>
+            </div>
+
+            <button class="action-btn" onclick="nextStep('step-reasons', 'main-content')">Continuar al final</button>
         </div>
 
         <div id="main-content" class="hidden">
@@ -139,6 +299,8 @@
                 </div>
 
                 <p><strong>Vamos juntos a ese "Buen Pan".<br>Ahí descubriremos la primera pista de esta aventura. 💖</strong></p>
+                <br>
+                <a href="fotos.html" class="action-btn" style="text-decoration: none; display: inline-block;">Aquí empieza nuestra historia</a>    
             </div>
         </div>
 
