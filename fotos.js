@@ -27,10 +27,10 @@ const REFERENCE_IMAGES = [
 
 /* --- 2. CONFIGURACIÓN DE CÓDIGOS SECRETOS --- */
 const CONFIG = {
-    1: { code: "AMOR" }, 
-    2: { code: "2024" }, 
-    3: { code: "ISELA" },
-    4: { code: "SIEMPRE" }
+    1: { code: "AI16CG" }, 
+    2: { code: "RI0204" }, 
+    3: { code: "A2R803" },
+    4: { code: "RG0904" }
 };
 
 let showingText = true; 
@@ -198,4 +198,44 @@ function resetProgress() {
         localStorage.clear();
         location.reload();
     }
+}
+
+function unlockNextLevel(currentId) {
+    const nextId = currentId + 1;
+    if (nextId <= 4) {
+        // Lógica normal para desbloquear el siguiente nivel
+        const nextInput = document.getElementById(`input-${nextId}`);
+        const nextBtn = document.querySelector(`#frame-${nextId} .unlock-btn`);
+        const nextFrame = document.getElementById(`frame-${nextId}`);
+        
+        // Si no hay foto guardada aún en el siguiente nivel, habilitamos los inputs
+        if (!localStorage.getItem(`photo-${nextId}`)) {
+            if(nextInput) nextInput.disabled = false;
+            if(nextBtn) nextBtn.disabled = false;
+            if(nextFrame) {
+                nextFrame.style.opacity = "1"; 
+                nextFrame.style.filter = "none";
+            }
+        } else {
+            // Si ya hay foto (por recarga de página), solo aseguramos que se vea bien
+            if(nextFrame) {
+                nextFrame.style.opacity = "1";
+                nextFrame.style.filter = "none";
+            }
+        }
+    } else {
+        // --- CAMBIO AQUÍ: AL COMPLETAR TODO ---
+        // Esperamos un poquito (500ms) para que se vea la última foto y luego ¡PUM! Pantalla rosa
+        setTimeout(() => {
+            const finalScreen = document.getElementById("completion-screen");
+            finalScreen.classList.remove("hidden");
+            
+            // Opcional: Si quieres que también voltee las cartas automáticamente detrás del telón:
+            if(!showingText) toggleAllCards(); 
+        }, 500);
+    }
+}
+
+function closeCompletion() {
+    document.getElementById('completion-screen').classList.add('hidden');
 }
